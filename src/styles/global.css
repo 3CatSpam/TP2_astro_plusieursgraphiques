@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+:root {
+	font-family: Arial, sans-serif;
+	color: #243447;
+	background: #f4f7f9;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.home-content {
+	width: min(100% - 2rem, 1100px);
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+
+h1,
+h2 {
+	margin-top: 0;
+}
+
+.chart-menu {
+	margin: 1.5rem 0;
+}
+
+.chart-menu a {
+	color: #176b87;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.chart-menu a:hover {
+	text-decoration: underline;
+}
+
+.slider {
+	gap: 1rem;
+	scroll-behavior: smooth;
+}
+
+.chart-slide {
+	padding: 1rem;
+	background: white;
+	border: 1px solid #d9e2e8;
+	border-radius: 8px;
+}
