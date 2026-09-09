@@ -4,8 +4,6 @@ import Layout from "../layouts/Layout.astro";
 import * as Plot from "@observablehq/plot";
 import penguins from "../assets/penguins.json";
 const penguinsAdelie = penguins.filter(({ species }) => species === "Adelie");
-const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstrap");
-const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
 ---
 
 <Layout>
@@ -14,36 +12,6 @@ const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
     options={{
       marks: [
         Plot.dot(penguinsAdelie, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-</Layout>
-
-<Layout>
-  <h1 class="text-2xl">Chinstrap</h1>
-  <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguinsChinstrap, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-</Layout>
-
-<Layout>
-  <h1 class="text-2xl">Gentoo</h1>
-  <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguinsGentoo, {
           x: "culmen_length_mm",
           y: "culmen_depth_mm",
           stroke: "species",

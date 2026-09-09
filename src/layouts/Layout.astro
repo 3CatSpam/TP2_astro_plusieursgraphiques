@@ -12,6 +12,14 @@ import "../styles/global.css";
     <title>Astro Basics</title>
   </head>
   <body>
+    <header class="site-header">
+      <nav aria-label="Navigation principale">
+        <a class:list={{ active: Astro.url.pathname === "/" }} href="/">Accueil</a>
+        <a class:list={{ active: Astro.url.pathname === "/adelie" }} href="/adelie">Adelie</a>
+        <a class:list={{ active: Astro.url.pathname === "/chinstrap" }} href="/chinstrap">Chinstrap</a>
+        <a class:list={{ active: Astro.url.pathname === "/gentoo" }} href="/gentoo">Gentoo</a>
+      </nav>
+    </header>
     <slot />
   </body>
 </html>
@@ -22,5 +30,30 @@ import "../styles/global.css";
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .site-header {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 1.5rem;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  nav a {
+    color: #4b5563;
+    text-decoration: none;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: #111827;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
   }
 </style>
