@@ -15,9 +15,7 @@ body {
 }
 
 .home-content {
-	width: min(100% - 2rem, 1100px);
-	margin: 0 auto;
-	padding: 2rem 0;
+	@apply mx-auto w-[calc(100%-2rem)] max-w-[1100px] py-8;
 }
 
 h1,
@@ -26,27 +24,21 @@ h2 {
 }
 
 .chart-menu {
-	margin: 1.5rem 0;
+	@apply my-6 flex gap-4;
 }
 
-.chart-menu a {
-	color: #176b87;
-	font-weight: bold;
-	text-decoration: none;
+.menu-item {
+	@apply font-bold text-[#176b87] no-underline hover:underline;
 }
 
-.chart-menu a:hover {
-	text-decoration: underline;
+.menu-item.active {
+	@apply bg-red-200;
 }
 
 .slider {
-	gap: 1rem;
-	scroll-behavior: smooth;
+	@apply flex overflow-x-auto;
 }
 
 .chart-slide {
-	padding: 1rem;
-	background: white;
-	border: 1px solid #d9e2e8;
-	border-radius: 8px;
+	@apply min-w-full rounded-lg border border-[#d9e2e8] bg-white p-4;
 }

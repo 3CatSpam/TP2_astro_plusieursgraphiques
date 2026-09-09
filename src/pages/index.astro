@@ -10,17 +10,17 @@ const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
 
 <Layout>
   <main class="home-content">
-    <h1 class="text-2xl">Comparaison des manchots</h1>
+    <h1 class="mt-0 text-2xl">Comparaison des manchots</h1>
 
     <nav class="chart-menu" aria-label="Accès aux graphiques">
-      <a href="#adelie">Adelie</a>
-      <a href="#chinstrap">Chinstrap</a>
-      <a href="#gentoo">Gentoo</a>
+      <a class="menu-item [&.active]:bg-red-200" href="#adelie">Adelie</a>
+      <a class="menu-item [&.active]:bg-red-200" href="#chinstrap">Chinstrap</a>
+      <a class="menu-item [&.active]:bg-red-200" href="#gentoo">Gentoo</a>
     </nav>
 
     <div class="slider" aria-label="Graphiques des différentes espèces">
-      <section class="chart-slide" id="adelie">
-        <h2>Adelie</h2>
+      <section class="chart-slide item" id="adelie">
+        <h2 class="mt-0">Adelie</h2>
         <PlotFigure
           options={{
             marks: [
@@ -34,8 +34,8 @@ const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
         />
       </section>
 
-      <section class="chart-slide" id="chinstrap">
-        <h2>Chinstrap</h2>
+      <section class="chart-slide item" id="chinstrap">
+        <h2 class="mt-0">Chinstrap</h2>
         <PlotFigure
           options={{
             marks: [
@@ -49,8 +49,8 @@ const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
         />
       </section>
 
-      <section class="chart-slide" id="gentoo">
-        <h2>Gentoo</h2>
+      <section class="chart-slide item" id="gentoo">
+        <h2 class="mt-0">Gentoo</h2>
         <PlotFigure
           options={{
             marks: [
@@ -67,18 +67,23 @@ const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
   </main>
 </Layout>
 
-<style>
-  .chart-menu {
-    display: flex;
-    gap: 1rem;
-  }
+<script>
+  const menuItems = document.querySelectorAll(".menu-item");
+  const items = document.querySelectorAll(".item");
 
-  .slider {
-    display: flex;
-    overflow-x: auto;
-  }
+  console.log("menuItems", menuItems);
+  console.log("items", items);
 
-  .chart-slide {
-    min-width: 100%;
-  }
-</style>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("id");
+        const menuItem = document.querySelector(`.menu-item[href="#${id}"]`);
+        menuItem?.classList.toggle("active", entry.isIntersecting);
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  items.forEach((item) => observer.observe(item));
+</script>
