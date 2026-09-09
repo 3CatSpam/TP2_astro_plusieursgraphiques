@@ -32,7 +32,7 @@ h2 {
 }
 
 .menu-item.active {
-	@apply bg-red-200;
+	@apply rounded-md bg-[#d9f0f5] px-3 py-1 text-[#0f566b] no-underline;
 }
 
 .slider {
